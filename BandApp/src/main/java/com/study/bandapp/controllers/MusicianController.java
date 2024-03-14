@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MusicianController {
 	
-	@GetMapping(path="/album/{id}")
-	public void getAlbum() {
+	@GetMapping(path="/musician/{id}")
+	public void getMusician() {
 		
 	}
 
-	@PostMapping(path="/album")
-	public void createAlbum() {
+	@PostMapping(path="/musician")
+	public void createMusician() {
 		
 	}
 

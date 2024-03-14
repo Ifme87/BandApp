@@ -11,7 +11,11 @@ import jakarta.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(name="albums")
 public class AlbumEntity {
+	
+	@Id
+	Long id;
 	String name;
 	String band;
 	int releaseDate;
