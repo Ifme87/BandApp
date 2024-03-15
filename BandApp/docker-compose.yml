@@ -1,0 +1,32 @@
+version: '3.8'  # There are several versions of the Compose file format – 1, 2, 2.x, and 3.x. For full details on what each version includes and how to upgrade, see https://docs.docker.com/compose/compose-file/compose-file-v3/
+services:	# each service will equate to a new docker run command
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    restart: always		# restarts if the container stops automatically
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+   
+  bandapp:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8181:8181
+    depends_on:
+      - postgres
+    environment:
+      - SERVER_PORT=8181
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/bandapp
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      
+volumes:
+  db:
+    driver: local

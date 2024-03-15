@@ -11,8 +11,8 @@
 	<groupId>com.study</groupId>
 	<artifactId>bandapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>pet</name>
-	<description>Demo project for Spring Boot</description>
+	<name>bandapp</name>
+	<description>Pet Spring Boot project</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

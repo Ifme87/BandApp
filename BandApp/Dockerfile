@@ -1,14 +1,17 @@
-# Used Java image 
-FROM amazoncorretto:8-alpine3.17-jre
 
-# Create user & group
-RUN addgroup -S app && adduser -S app -G app
+FROM maven:3.8-openjdk-17 as build
+ARG VERSION=1.0.0-SNAPSHOT
+WORKDIR /app/BandApp
 
-# Use user "app"
-USER app
+COPY . .
+RUN mvn versions:set -DnewVersion=${VERSION} && \
+	mvn clean && \
+	mvn package
 
-# Copy jar file into the docker image
-COPY target/*.jar app.jar
 
-# Run the jar file
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+FROM openjdk:17-jdk-slim
+ARG VERSION=1.0.0-SNAPSHOT
+WORKDIR /app/BandApp
+
+COPY --from=build /app/BandApp/target/bandapp-${VERSION}.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
