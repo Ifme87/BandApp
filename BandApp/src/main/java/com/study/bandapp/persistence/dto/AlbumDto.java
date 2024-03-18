@@ -1,11 +1,13 @@
 package com.study.bandapp.persistence.dto;
 
-import lombok.Data;
+import lombok.Builder;
 
-@Data
-public class AlbumDto {
-	String name;
-	String band;
-	int releaseDate;
-	String genre;
-}
+@Builder
+public record AlbumDto(	
+		String name,
+		BandDto band,
+		int releaseDate,
+		String genre
+) {}
+
+

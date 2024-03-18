@@ -2,11 +2,12 @@ package com.study.bandapp.persistence.dto;
 
 import java.util.Date;
 
-import lombok.Data;
+import lombok.Builder;
 
-@Data
-public class MusicianDto {
-	String name;
-	Date birthDate;
-	String instrument;
-}
+@Builder
+public record MusicianDto (
+	String name,
+	String surname,
+	Date birthDate,
+	String instrument
+) {}
