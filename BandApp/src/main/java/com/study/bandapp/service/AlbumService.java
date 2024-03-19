@@ -2,11 +2,13 @@ package com.study.bandapp.service;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.study.bandapp.persistence.repositories.AlbumRepository;
 import com.study.bandapp.persistence.dto.*;
 import com.study.bandapp.persistence.entities.AlbumEntity;
 
+@Component
 public class AlbumService {
 	
 	private AlbumRepository albumRepository;

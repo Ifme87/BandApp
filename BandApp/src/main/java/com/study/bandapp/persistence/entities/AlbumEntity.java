@@ -35,7 +35,6 @@ public class AlbumEntity {
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "band_id", referencedColumnName = "id")
-	@Column(nullable = false)
 	private BandEntity band;
 	
 	@Column(nullable = false)

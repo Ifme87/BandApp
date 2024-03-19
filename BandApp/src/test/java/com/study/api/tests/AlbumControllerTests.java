@@ -5,10 +5,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.study.bandapp.enums.Genre;
-import com.study.bandapp.persistence.dto.AlbumDto;
-import com.study.bandapp.persistence.dto.BandDto;
-
 @SpringBootTest(classes = AlbumControllerTests.class)
 @ExtendWith(SpringExtension.class)
 public class AlbumControllerTests {

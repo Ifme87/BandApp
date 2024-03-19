@@ -34,7 +34,7 @@ public class MusicianEntity {
 	private String surname;
 	
 	@Column(nullable = false)
-	private int birthDate;
+	private String birthDate;
 	
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

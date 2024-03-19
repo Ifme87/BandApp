@@ -1,5 +1,7 @@
 package com.study.bandapp.persistence.entities;
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -55,7 +57,7 @@ public class BandEntity {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(referencedColumnName = "id")
-	private AlbumEntity albums;
+	private List<AlbumEntity> albums;
 	
 	
 }
