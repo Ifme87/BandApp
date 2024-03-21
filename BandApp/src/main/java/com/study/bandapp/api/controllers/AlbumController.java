@@ -1,4 +1,6 @@
-package com.study.bandapp.controllers;
+package com.study.bandapp.api.controllers;
+
+import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,26 +23,26 @@ public class AlbumController {
 	public AlbumController(AlbumService albumService) {
 		this.albumService = albumService;
 	}
-
-	@GetMapping(path="/albums/{id}")
+	
+	@GetMapping(path="/Albums/{id}")
 	public ResponseEntity<AlbumDto> getAlbum(@PathVariable Long id) {
-		var album = albumService.getAlbum(id);
-		if (album != null) {
-			return new ResponseEntity<AlbumDto>(album, HttpStatus.OK);
+		var Album = albumService.getAlbum(id);
+		if (Album != null) {
+			return new ResponseEntity<AlbumDto>(Album, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
-	@PostMapping(path="/albums")
-	public ResponseEntity<AlbumDto> createAlbum(@RequestBody AlbumDto albumDto) {
-		var album = albumService.createAlbum(albumDto);
-		return new ResponseEntity<AlbumDto>(album, HttpStatus.CREATED);
+	@PostMapping(path="/Albums")
+	public ResponseEntity<AlbumDto> createAlbum(@RequestBody AlbumDto AlbumDto) {
+		var Album = albumService.createAlbum(AlbumDto);
+		return new ResponseEntity<AlbumDto>(Album, HttpStatus.CREATED);
 	}
 	
-	@GetMapping(path="/albums")
-	public void getAllAlbum() {
-		
+	@GetMapping(path="/Albums")
+	public ResponseEntity<List<AlbumDto>> getAllAlbums() {
+		return new ResponseEntity<List<AlbumDto>>(albumService.getAllAlbums(), HttpStatus.OK);
 	}
 	
 	@DeleteMapping(path="/albums")

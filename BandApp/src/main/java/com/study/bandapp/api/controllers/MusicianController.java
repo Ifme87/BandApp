@@ -1,4 +1,6 @@
-package com.study.bandapp.controllers;
+package com.study.bandapp.api.controllers;
+
+import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,5 +37,9 @@ public class MusicianController {
 		var musician = musicianService.createMusician(musicianDto);
 		return new ResponseEntity<MusicianDto>(musician, HttpStatus.CREATED);
 	}
-
+	
+	@GetMapping(path="/musicians")
+	public ResponseEntity<List<MusicianDto>> getAllMusicians() {
+		return new ResponseEntity<List<MusicianDto>>(musicianService.getAllMusicians(), HttpStatus.OK);
+	}
 }

@@ -1,5 +1,8 @@
 package com.study.bandapp.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,6 +35,15 @@ public class MusicianService {
 	public MusicianDto createMusician(MusicianDto musicianDto) {
 		var savedMusician = musicianRepository.save(modelMapper.map(musicianDto, MusicianEntity.class));
 		return modelMapper.map(savedMusician, MusicianDto.class);
+	}
+	
+	public List<MusicianDto> getAllMusicians() {
+		var musicians = musicianRepository.findAll();
+		List<MusicianDto> result = new ArrayList<>();
+		for (MusicianEntity a : musicians) {
+			result.add(modelMapper.map(a, MusicianDto.class)); 
+		}
+		return result;
 	}
 
 }

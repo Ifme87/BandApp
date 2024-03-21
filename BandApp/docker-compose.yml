@@ -12,21 +12,21 @@ services:	# each service will equate to a new docker run command
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
    
- # bandapp:
- #   build: 
- #     context: .
- #     dockerfile: Dockerfile
- #   restart: always
- #   ports:
- #     - 8080:8080
- #   depends_on:
- #     - postgres
- #   environment:
- #     - SERVER_PORT=8080
- #     - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/bandapp
- #     - SPRING_DATASOURCE_USERNAME=postgres
- #     - SPRING_DATASOURCE_PASSWORD=password
- #     - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  bandapp:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    environment:
+      - SERVER_PORT=8080
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/bandapp
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       
 volumes:
   db:
