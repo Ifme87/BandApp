@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class BandDto{
+	Long id;
 	String name;
 	int estYear;
 	AlbumDto albums;

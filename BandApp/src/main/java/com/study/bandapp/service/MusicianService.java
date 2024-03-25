@@ -2,6 +2,7 @@ package com.study.bandapp.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class MusicianService {
 	}
 
 	public MusicianDto getMusician(Long id) {
-		var musician = musicianRepository.findById(id);
+		Optional<MusicianEntity> musician = musicianRepository.findById(id);
 		if (musician.isPresent()) {
 			return modelMapper.map(musician, MusicianDto.class);
 		} else {
@@ -33,12 +34,12 @@ public class MusicianService {
 	}
 		
 	public MusicianDto createMusician(MusicianDto musicianDto) {
-		var savedMusician = musicianRepository.save(modelMapper.map(musicianDto, MusicianEntity.class));
+		MusicianEntity savedMusician = musicianRepository.save(modelMapper.map(musicianDto, MusicianEntity.class));
 		return modelMapper.map(savedMusician, MusicianDto.class);
 	}
 	
 	public List<MusicianDto> getAllMusicians() {
-		var musicians = musicianRepository.findAll();
+		Iterable<MusicianEntity> musicians = musicianRepository.findAll();
 		List<MusicianDto> result = new ArrayList<>();
 		for (MusicianEntity a : musicians) {
 			result.add(modelMapper.map(a, MusicianDto.class)); 

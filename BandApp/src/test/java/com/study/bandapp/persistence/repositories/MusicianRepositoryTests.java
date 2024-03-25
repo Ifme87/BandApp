@@ -39,7 +39,7 @@ public class MusicianRepositoryTests {
 	}
 
 	@Test
-	public void testPostMusician() {
+	public void testSaveMusician() {
 		
 		Assertions.assertThat(savedMusician).isNotNull();
 		Assertions.assertThat(savedMusician.getId()).isGreaterThan(0);
@@ -51,7 +51,7 @@ public class MusicianRepositoryTests {
 	}
 	
 	@Test
-	public void testGetMusician() {
+	public void testFindByIdMusician() {
 		Optional<MusicianEntity> retreivedMusician = musicianRepository.findById(musicianEntity.getId());
 		MusicianEntity retreivedMusicianEntity = retreivedMusician.get();
 
@@ -61,6 +61,11 @@ public class MusicianRepositoryTests {
 		Assertions.assertThat(retreivedMusicianEntity.getSurname()).isEqualTo("Doe");
 		Assertions.assertThat(retreivedMusicianEntity.getBirthDate()).isEqualTo("1999");
 		Assertions.assertThat(retreivedMusicianEntity.getInstrument()).isEqualTo(Instrument.GUITAR);
+		
+	}
+	
+	@Test
+	public void testFindAllMusician() {
 		
 	}
 

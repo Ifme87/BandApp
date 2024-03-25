@@ -5,7 +5,8 @@ import com.study.bandapp.enums.Genre;
 import lombok.Data;
 
 @Data
-public class AlbumDto{	
+public class AlbumDto{
+	Long id;
 	String name;
 	BandDto band;
 	int releaseDate;

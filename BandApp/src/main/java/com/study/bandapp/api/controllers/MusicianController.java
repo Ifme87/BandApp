@@ -24,7 +24,7 @@ public class MusicianController {
 	
 	@GetMapping(path="/musicians/{id}")
 	public ResponseEntity<MusicianDto> getMusician(@PathVariable Long id) {
-		var musician = musicianService.getMusician(id);
+		MusicianDto musician = musicianService.getMusician(id);
 		if (musician != null) {
 			return new ResponseEntity<MusicianDto>(musician, HttpStatus.OK);
 		} else {
@@ -34,7 +34,7 @@ public class MusicianController {
 
 	@PostMapping(path="/musicians")
 	public ResponseEntity<MusicianDto> createMusician(@RequestBody MusicianDto musicianDto) {
-		var musician = musicianService.createMusician(musicianDto);
+		MusicianDto musician = musicianService.createMusician(musicianDto);
 		return new ResponseEntity<MusicianDto>(musician, HttpStatus.CREATED);
 	}
 	
